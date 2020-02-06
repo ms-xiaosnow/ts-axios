@@ -70,7 +70,7 @@ axios({
 })*/
 
 
-axios({
+/*axios({
   method: 'post',
   url: '/base/post',
   data: {
@@ -84,7 +84,7 @@ axios({
   url: '/base/post',
   headers: {
     'content-type': 'application/json;charset=utf-8',
-    'Accept': 'application/json, text/plain, */*'
+    'Accept': 'application/json, text/plain, *!/!*'
   },
   data: {
     a: 1,
@@ -102,9 +102,8 @@ axios({
   method: 'post',
   url: '/base/post',
   data: searchParams
-})
+})*/
 
-/*
 axios({
   method: 'post',
   url: '/base/post',
@@ -127,4 +126,3 @@ axios({
 }).then((res) => {
   console.log(res)
 })
-*/
