@@ -45,7 +45,7 @@ axios('/extend/post', {
   }
 })
 
-/*interface ResponseData<T = any> {
+interface ResponseData<T = any> {
   code: number
   result: T
   message: string
@@ -70,4 +70,4 @@ async function test() {
   }
 }
 
-test()*/
+test()
