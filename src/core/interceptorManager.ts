@@ -12,7 +12,7 @@ export default class InterceptorManager<T> implements AxiosInterceptorManager<T>
     this.interceptors = []
   }
 
-  use(resolved: ResolvedFn<T>, rejected: RejectedFn): number {
+  use(resolved: ResolvedFn<T>, rejected?: RejectedFn): number {
     this.interceptors.push({
       resolved,
       rejected
