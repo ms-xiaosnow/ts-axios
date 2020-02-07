@@ -14,7 +14,7 @@ export class AxiosError extends Error {
     request?: any,
     response?: AxiosResponse
   ) {
-    super()
+    super(message)
     this.config = config
     this.code = code
     this.request = request
