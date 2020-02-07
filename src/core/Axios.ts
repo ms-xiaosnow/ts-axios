@@ -1,8 +1,22 @@
-import { AxiosPromise, AxiosRequestConfig, Axios as AxiosInterface, Method } from '../types'
+import {
+  AxiosPromise,
+  AxiosRequestConfig,
+  Method,
+  Axios as AxiosInterface,
+  AxiosInstance
+} from '../types'
 import dispatchRequest from './dispatchRequest'
 
-export default class Axios implements AxiosInterface {
-  request(config: AxiosRequestConfig): AxiosPromise {
+export default class Axios {
+  request(url: any, config?: any): AxiosPromise {
+    if (typeof url === 'string') {
+      if (!config) {
+        config = {}
+      }
+      config.url = url
+    } else {
+      config = url
+    }
     return dispatchRequest(config)
   }
 
