@@ -1,4 +1,5 @@
 import { AxiosRequestConfig } from '../types'
+import { deepMerge, isPlainObject } from '../helpers/util'
 
 const strats = Object.create(null)
 
@@ -12,11 +13,30 @@ function fromVal2Strat(val1: any, val2: any): any {
   }
 }
 
+function deepMergeStract(val1: any, val2: any): any {
+  if (isPlainObject(val2)) {
+    return deepMerge(val1, val2)
+  } else if (typeof val2 !== 'undefined') {
+    return val2
+  } else if (isPlainObject(val1)) {
+    return deepMerge(val1)
+  } else if (typeof val1 !== 'undefined') {
+    return val1
+  }
+}
+
 const stratKeysFromVal2 = ['url', 'params', 'data']
 
 stratKeysFromVal2.forEach(key => {
   strats[key] = fromVal2Strat
 })
+
+const stratKeysDeepMerge = ['headers']
+
+stratKeysDeepMerge.forEach(key => {
+  strats[key] = deepMergeStract
+})
+
 
 export default function mergeConfig(config1: AxiosRequestConfig, config2?: AxiosRequestConfig) {
   if (!config2) {
