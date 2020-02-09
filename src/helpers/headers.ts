@@ -1,6 +1,5 @@
 import { deepMerge, isPlainObject } from './util'
 import { Method } from '../types'
-import { head } from 'shelljs'
 
 function normalizeHeaderName(headers: any, normalizedName: string): void {
   if (!headers) {
