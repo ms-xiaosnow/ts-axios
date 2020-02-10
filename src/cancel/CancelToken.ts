@@ -1,23 +1,23 @@
 import { Canceler, CancelExecutor, CancelTokenSource } from '../types'
-import Cancel from './cancel'
+import AxiosCancel from './AxiosCancel'
 
 interface ResolvePromise {
-  (reason?: Cancel): void
+  (reason?: AxiosCancel): void
 }
 
 export default class CancelToken {
-  promise: Promise<Cancel>
-  reason?: Cancel
+  promise: Promise<AxiosCancel>
+  reason?: AxiosCancel
 
   constructor(executor: CancelExecutor) {
     let resolvePromise: ResolvePromise
-    this.promise = new Promise<Cancel>(resolve => {
+    this.promise = new Promise<AxiosCancel>(resolve => {
       resolvePromise = resolve
     })
 
     executor(message => {
-      if (this.reason) {
-        this.reason = new Cancel(message)
+      if (!this.reason) {
+        this.reason = new AxiosCancel(message)
         resolvePromise(this.reason)
       }
     })

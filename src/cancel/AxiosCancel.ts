@@ -1,4 +1,4 @@
-export default class Cancel {
+export default class AxiosCancel {
   message?: string
 
   constructor(message?: string) {
@@ -7,5 +7,5 @@ export default class Cancel {
 }
 
 export function isCancel(value: any): boolean {
-  return value instanceof Cancel
+  return value instanceof AxiosCancel
 }
