@@ -11,7 +11,8 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
       headers,
       responseType,
       timeout,
-      cancelToken
+      cancelToken,
+      widthCredentials
     } = config
 
     const request = new XMLHttpRequest()
@@ -22,6 +23,10 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
 
     if (timeout) {
       request.timeout = timeout
+    }
+
+    if (widthCredentials) {
+      request.withCredentials = widthCredentials
     }
 
     request.open(method.toUpperCase(), url!, true)
