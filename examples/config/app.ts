@@ -3,7 +3,6 @@ import qs from 'qs'
 
 // axios.defaults.headers.common['test2'] = 123
 
-/*
 axios({
   url: '/config/post',
   method: 'post',
@@ -16,7 +15,6 @@ axios({
 }).then(res => {
   console.log(res.data)
 })
-*/
 
 /*
 axios({
@@ -38,6 +36,7 @@ axios({
   console.log(res.data)
 })
 */
+/*
 const instance = axios.create({
   transformRequest: [(function(data) {
     return qs.stringify(data)
@@ -58,4 +57,5 @@ instance({
 }).then(res => {
   console.log(res.data)
 })
+*/
 
