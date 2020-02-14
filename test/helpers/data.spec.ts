@@ -1,4 +1,3 @@
-import cookie from '../../src/helpers/cookie'
 import { transformRequest, transformResponse } from '../../src/helpers/data'
 
 describe('helpers:data', () => {

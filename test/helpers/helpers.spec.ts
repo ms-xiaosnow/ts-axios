@@ -1,5 +1,3 @@
-import { AxiosRequestConfig, AxiosResponse } from '../../src/types'
-import { createError } from '../../src/helpers/error'
 import { flattenHeaders, parseHeaders, processHeaders } from '../../src/helpers/headers'
 
 describe('helpers:error', () => {
