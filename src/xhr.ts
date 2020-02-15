@@ -93,7 +93,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
     }
 
     function processHeaders(): void {
-      if (isFormData(data)) {
+      if (typeof data === 'undefined' || isFormData(data)) {
         delete headers['Content-Type']
       }
 
