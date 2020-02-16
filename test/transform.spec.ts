@@ -37,7 +37,6 @@ describe('transform', () => {
     })
 
     setTimeout(() => {
-      console.log(response.data)
       expect(typeof response.data).toBe('object')
       expect(response.data.foo).toBe('bar')
       done()
