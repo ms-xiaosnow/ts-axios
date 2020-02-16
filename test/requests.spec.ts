@@ -251,4 +251,53 @@ describe('requests', () => {
     })
   })
 
+  test('should remove Content-Type header if data is null', () => {
+    let response: AxiosResponse
+
+    axios.post('/foo', null, {
+      headers: {
+        'content-type': 'application/json'
+      }
+    }).then(res => {
+      response = res
+    })
+
+    return getAjaxRequest().then(req => {
+      expect(req.requestHeaders['Content-Type']).toBeUndefined()
+    })
+  })
+
+  test('should support array buffer response', done => {
+    let response: AxiosResponse
+
+    function str2ab(str: string) {
+      const buff = new ArrayBuffer(str.length * 2)
+      const view = new Uint16Array(buff)
+      for (let i = 0; i < str.length; i++) {
+        view[i] = str.charCodeAt(i)
+      }
+      return buff
+    }
+
+    axios('/foo', {
+      responseType: 'arraybuffer'
+    }).then(data => {
+      response = data
+    })
+
+    return getAjaxRequest().then(req => {
+      req.respondWith({
+        status: 200,
+        // @ts-ignore
+        response: str2ab('hello world')
+      })
+
+      setTimeout(() => {
+        expect(response.data.byteLength).toBe(22)
+        done()
+      }, 100)
+
+    })
+  })
+
 })
